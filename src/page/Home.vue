@@ -1,9 +1,14 @@
 <template>
-  <div>
-      <button @click='dialog' class='home__btn'>dialog组件</button>
-      <button @click='loading' class='home__btn'>loading组件</button>
-      <button @click='toast' class='home__btn'>toast组件</button>
-  </div>
+    <div>
+        <button @click='dialog' class='home__btn'>dialog组件</button>
+        <button @click='loading' class='home__btn'>loading组件</button>
+        <button @click='toast' class='home__btn'>toast组件</button>
+        <button @click='goToTop' class='top__btn' title="回到顶部">顶</button>
+        <div class='bottom_line'>
+            <p>我是底线~</p>
+            <hr/>
+        </div>
+    </div>    
 </template>
 
 <script>
@@ -39,6 +44,17 @@ export default {
             setTimeout(() => {
                 this.$toast.destroy()
             }, 2000)
+        },
+        goToTop () {
+            let timer = null
+            timer = setInterval(() => {
+                let osTop = document.documentElement.scrollTop || document.body.scrollTop
+                var isSpeed = Math.floor(-osTop / 6)
+                document.documentElement.scrollTop = document.body.scrollTop = osTop + isSpeed
+                if (osTop === 0) {
+                    clearInterval(timer)
+                }
+            }, 30)
         }
     }
 }
@@ -53,5 +69,25 @@ export default {
  margin: .3rem;
  border-radius: .5rem;
 }
+.bottom_line{
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    top:40rem;
+    margin-bottom: .5rem;
+    transform: translate(-50%, 0);
+}
+.top__btn{
+    position: fixed;
+    top:80%;
+    left:90%;
+    background-color: #41B883;
+    color: #ffffff;
+    height: .5rem;
+    width: .5rem;
+    border-radius: .5rem;
+    font-size: .25rem;
+}
+
 </style>
 
