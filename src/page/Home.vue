@@ -3,6 +3,7 @@
         <button @click='dialog' class='home__btn'>dialog组件</button>
         <button @click='loading' class='home__btn'>loading组件</button>
         <button @click='toast' class='home__btn'>toast组件</button>
+        <SearchBar></SearchBar>
         <button @click='goToTop' class='top__btn' title="回到顶部">顶</button>
         <div class='bottom_line'>
             <p>我是底线~</p>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import SearchBar from '../components/SearchBar'
 export default {
     methods: {
         dialog () {
@@ -56,7 +58,8 @@ export default {
                 }
             }, 30)
         }
-    }
+    },
+    components: { SearchBar }
 }
 </script>
 
@@ -89,5 +92,9 @@ export default {
     font-size: .25rem;
 }
 
+</style>
+
+<style lang="less">
+@import '../style/iconfont/iconfont.css';
 </style>
 
